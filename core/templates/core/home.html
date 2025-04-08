@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h2>All Questions</h2>
+
+{% for question in questions %}
+    <div style="margin-bottom:20px;">
+        <h3><a href="{% url 'question_detail' question.pk %}">{{ question.title }}</a></h3>
+        <p>Asked by {{ question.user.username }} at {{ question.created_at }}</p>
+    </div>
+{% empty %}
+    <p>No questions yet.</p>
+{% endfor %}
+{% endblock %}

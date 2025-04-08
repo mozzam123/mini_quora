@@ -1,0 +1,43 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h2>{{ question.title }}</h2>
+<p>{{ question.body }}</p>
+<p>Asked by {{ question.user.username }} at {{ question.created_at }}</p>
+
+<hr>
+
+<h3>Answers:</h3>
+{% for answer in question.answers.all %}
+    <div style="margin-bottom:15px;">
+        <p>{{ answer.body }}</p>
+        <p>By {{ answer.user.username }} | Likes: {{ answer.total_likes }}</p>
+        {% if user.is_authenticated %}
+            <form method="post" action="{% url 'like_answer' answer.pk %}">
+                {% csrf_token %}
+                <button type="submit">
+                    {% if user in answer.likes.all %}
+                        Unlike
+                    {% else %}
+                        Like
+                    {% endif %}
+                </button>
+            </form>
+        {% endif %}
+    </div>
+{% empty %}
+    <p>No answers yet.</p>
+{% endfor %}
+
+{% if user.is_authenticated %}
+    <hr>
+    <h3>Post Your Answer:</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit Answer</button>
+    </form>
+{% else %}
+    <p><a href="{% url 'login' %}">Login</a> to answer this question.</p>
+{% endif %}
+{% endblock %}

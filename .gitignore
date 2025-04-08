@@ -1,0 +1,11 @@
+# Python/Django specific
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+
+env/
+
+# Database
+*.sqlite3
