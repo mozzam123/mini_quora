@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import login, logout
+from django.contrib.auth import logout
 from .forms import UserRegistrationForm, QuestionForm, AnswerForm
 from .models import Question, Answer
 from django.contrib.auth.decorators import login_required
