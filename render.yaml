@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: quora-clone
+    env: python
+    plan: free
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn quora_clone.wsgi:application"
