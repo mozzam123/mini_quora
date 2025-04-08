@@ -5,6 +5,12 @@ It allows users to register, log in, post questions, view and answer others' que
 
 ---
 
+## Live Demo
+
+🚀 [Check it out here!](https://mini-quora-ian1.onrender.com/)
+
+---
+
 ## Features
 
 - User Registration (Signup)
